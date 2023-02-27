@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    div{
+      width: 100px;
+      height: 100px;
+      background-color:rgb(184, 108, 255);
+    }
+  </style>
+</head>
+<body>
+  <div id="root" >
+
+  </div>
+  <script>
+    let rootElement = document.getElementById('root');
+    console.dir(rootElement);
+    let weeks = ["월요일 오늘","수요일 쉼","금요일 놀자","토요일은 놀기","일요일은 쉬기"];
+    let bgc = ["rgb(184, 108, 255)","rgb(160, 188, 40)","rgb(90, 160, 50)","rgb(188, 108, 25)","rgb(75, 48, 125)"];
+    let fontSize = ["10px","20px","30px","40px","50px"]
+    
+
+    // let bgc = ["rgb(255,255,255)"];
+    let counter = 0;
+
+    rootElement.addEventListener("click",function(){//root의 text를 넣는곳에 어떤 배열, 어떤 변수를 숫자로 할당
+      
+      rootElement.style.fontSize = fontSize[counter]; //폰트사이즈
+      rootElement.style.backgroundColor = bgc[counter]; //배경색
+      rootElement.textContent = weeks[counter]; //텍스트 콘텐트
+
+      counter = counter +1;
+      if(counter>=weeks.length){
+        counter=0
+      }
+      console.log(counter)
+
+    });
+
+
+  </script>
+</body>
+</html>
