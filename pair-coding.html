@@ -60,7 +60,7 @@
     let root = document.querySelector('#root') 
     console.dir(root)
     // let roundDiv1 = root.children[0]
-    // // console.dir(roundDiv1)
+    console.dir(root.children[2])
     // let roundDiv2 = root.children[1]
     // let roundDiv3 = root.children[2]
 
@@ -76,7 +76,7 @@
       }
       return divElem;
     }
-    function ranDiv(){   //div 블러의 속성들.(테두리곡선,상단여백,좌측여백,배경색,필터블러)
+    function ranDiv(a){   //div 블러의 속성들.(테두리곡선,상단여백,좌측여백,배경색,필터블러) 랜덤생성
     
       let divElem = {
         borderRadius : Math.floor(Math.random()*250)+"px",
@@ -129,17 +129,26 @@
     root.children[2].style.marginLeft          =divFam.divChil3.maLeft;
     root.children[2].style.backgroundColor     =divFam.divChil3.bgc;
     root.children[2].style.filter              =divFam.divChil3.filBl;
+    root.children[2].style.zIndex = 999;
     
-    let counter = 0;
     root.children[2].addEventListener("click",function(){
       let a = "rgb("+Math.floor(Math.random()*255)+","+Math.floor(Math.random()*255)+","+Math.floor(Math.random()*255)+")"
       root.style.backgroundColor=a
-      // root.children[0].style.backgroundColor = "rgb("+Math.floor(Math.random()*255)+","+Math.floor(Math.random()*255)+","+Math.floor(Math.random()*255)+")"
-      // root.children[1].style.backgroundColor = "rgb("+Math.floor(Math.random()*255)+","+Math.floor(Math.random()*255)+","+Math.floor(Math.random()*255)+")"
-      // root.children[2].style.backgroundColor = "rgb("+Math.floor(Math.random()*255)+","+Math.floor(Math.random()*255)+","+Math.floor(Math.random()*255)+")"
+      root.children[0].style.backgroundColor = "rgb("+Math.floor(Math.random()*255)+","+Math.floor(Math.random()*255)+","+Math.floor(Math.random()*255)+")"
+      root.children[1].style.backgroundColor = "rgb("+Math.floor(Math.random()*255)+","+Math.floor(Math.random()*255)+","+Math.floor(Math.random()*255)+")"
+      root.children[2].style.backgroundColor = "rgb("+Math.floor(Math.random()*255)+","+Math.floor(Math.random()*255)+","+Math.floor(Math.random()*255)+")"
+      
+      for(let i=0;i<100;i++){
+      
       let aDiv = document.createElement("div")
       root.appendChild(aDiv)
       
+      aDiv.style.borderRadius = Math.floor(Math.random()*250)+"px"
+      aDiv.style.marginTop = Math.floor(Math.random()*600-300)+"px"
+      aDiv.style.marginLeft = Math.floor(Math.random()*600-300)+"px"
+      aDiv.style.backgroundColor = "rgb("+Math.floor(Math.random()*255)+","+Math.floor(Math.random()*255)+","+Math.floor(Math.random()*255)+")"
+      aDiv.style.filter = blur(Math.floor(Math.random()*100)+"px")
+    }
       
       
     })
