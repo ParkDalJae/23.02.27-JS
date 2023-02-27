@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="root"></div>
+  <script>
+    function dataFunc(a, b, c, d){
+      let obj = {
+        parentData : document.querySelector(a),
+        childrenData : document.createElement(b),
+        grandChildren : document.createElement(c),
+        grandChildrenText : d
+      }
+      return obj;
+    }
+    let tagArray = ["div","footer","section","h1","ul","li"]
+    let dataForm = dataFunc("#root",tagArray[4],tagArray[5],"hello"); // 캡슐화
+    
+    // let dataForm = {
+    //   parentData : document.querySelector('#root'),
+    //   childrenData : document.createElement('ul'),
+    //   grandChildren : document.createElement('li'),
+    //   grandChildrenText : "hello"
+    // }
+
+    let root = dataForm.parentData;
+    console.dir(root);
+    let aa = dataForm.childrenData;
+    root.appendChild(aa);
+    let dd = dataForm.grandChildren
+    aa.appendChild(dd);
+    dd.textContent=dataForm.grandChildrenText;
+
+  </script>
+</body>
+</html>
