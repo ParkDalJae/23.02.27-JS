@@ -5,8 +5,146 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <style>
+    *{      margin: 0; padding: 0; box-sizing: border-box;      }
+    body{
+      overflow-x:hidden;      /* 내용이 넘칠때 스크롤바를 없앰 */
+    }
+    #root{
+      width: 100vw;
+      height: 100vh;
+      background-color: cadetblue;
+      /* flex-set */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      /* position setup */
+      position: relative;
+    }
+    #root > div{
+      /* div common shape */
+      width: 500px;
+      height: 500px;
+      /* border-radius: 250px; */
+      opacity: 0.8;
+      /* position setup */
+      position: absolute;
+    }
+    /* #root > div:nth-child(1){
+      margin-top: 300px;
+      margin-left: 300px;
+      background-color: salmon;
+      filter:blur(20px);
+    }
+    #root > div:nth-child(2){
+      margin-top: 50px;
+      margin-left: -50px;
+      background-color: cornflowerblue;
+      filter:blur(20px);
+    }
+    #root > div:nth-child(3){
+      margin-top: -100px;
+      margin-left: 50px;
+      background-color: coral;
+      filter:blur(10px);
+    } */
+  </style>
 </head>
 <body>
-  
+  <div id="root">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+  <script>
+    let root = document.querySelector('#root') 
+    console.dir(root)
+    // let roundDiv1 = root.children[0]
+    // // console.dir(roundDiv1)
+    // let roundDiv2 = root.children[1]
+    // let roundDiv3 = root.children[2]
+
+    function blurDiv(a,b,c,d,e){   //div 블러의 속성들.(테두리곡선,상단여백,좌측여백,배경색,필터블러)
+    
+      let divElem = {
+        boRadi: a,
+        maTop :b,
+        maLeft: c,
+        bgc : d,
+        filBl : e,
+        
+      }
+      return divElem;
+    }
+    function ranDiv(){   //div 블러의 속성들.(테두리곡선,상단여백,좌측여백,배경색,필터블러)
+    
+      let divElem = {
+        borderRadius : Math.floor(Math.random()*250)+"px",
+        marginTop : Math.floor(Math.random()*300)+"px",
+        marginLeft: Math.floor(Math.random()*300)+"px",
+        backgroundColor : "rgb("+Math.floor(Math.random()*255)+","+Math.floor(Math.random()*255)+","+Math.floor(Math.random()*255)+")",
+        filter : blur(Math.floor(Math.random()*100)+"px"),
+        
+      }
+      return divElem;
+    }
+
+    console.log(ranDiv())
+    
+    
+    
+    
+    
+    let ran1;
+    ran1 = Math.floor(Math.random()*100)
+    console.log(ran1)
+    
+    let divFam={
+      divChil1:blurDiv("250px","300px","300px","rgb(250, 128, 144)","blur(20px)"),
+      divChil2:blurDiv("250px","50px","-50px","rgb(100, 149, 237)","blur(20px)"),
+      divChil3:blurDiv("250px","-100px","50px","rgb(255, 255, 80)","blur(10px)"),
+      
+    }
+    
+    // let divChil1=blurDiv("250px","300px","300px","rgb(250, 128, 144)","blur(20px)")
+    // let divChil2=blurDiv("250px","50px","-50px","rgb(100, 149, 237)","blur(20px)")
+    // let divChil3=blurDiv("250px","-100px","50px","rgb(255, 127, 80)","blur(10px)")
+    
+    
+    
+    root.children[0].style.borderRadius        =divFam.divChil1.boRadi;
+    root.children[0].style.marginTop           =divFam.divChil1.maTop;
+    root.children[0].style.marginLeft          =divFam.divChil1.maLeft;
+    root.children[0].style.backgroundColor     =divFam.divChil1.bgc;
+    root.children[0].style.filter              =divFam.divChil1.filBl;
+    
+    root.children[1].style.borderRadius        =divFam.divChil2.boRadi;
+    root.children[1].style.marginTop           =divFam.divChil2.maTop;
+    root.children[1].style.marginLeft          =divFam.divChil2.maLeft;
+    root.children[1].style.backgroundColor     =divFam.divChil2.bgc;
+    root.children[1].style.filter              =divFam.divChil2.filBl;
+    
+    root.children[2].style.borderRadius        =divFam.divChil3.boRadi;
+    root.children[2].style.marginTop           =divFam.divChil3.maTop;
+    root.children[2].style.marginLeft          =divFam.divChil3.maLeft;
+    root.children[2].style.backgroundColor     =divFam.divChil3.bgc;
+    root.children[2].style.filter              =divFam.divChil3.filBl;
+    
+    let counter = 0;
+    root.children[2].addEventListener("click",function(){
+      let a = "rgb("+Math.floor(Math.random()*255)+","+Math.floor(Math.random()*255)+","+Math.floor(Math.random()*255)+")"
+      root.style.backgroundColor=a
+      // root.children[0].style.backgroundColor = "rgb("+Math.floor(Math.random()*255)+","+Math.floor(Math.random()*255)+","+Math.floor(Math.random()*255)+")"
+      // root.children[1].style.backgroundColor = "rgb("+Math.floor(Math.random()*255)+","+Math.floor(Math.random()*255)+","+Math.floor(Math.random()*255)+")"
+      // root.children[2].style.backgroundColor = "rgb("+Math.floor(Math.random()*255)+","+Math.floor(Math.random()*255)+","+Math.floor(Math.random()*255)+")"
+      let aDiv = document.createElement("div")
+      root.appendChild(aDiv)
+      
+      
+      
+    })
+
+    
+    </script>
 </body>
 </html>
